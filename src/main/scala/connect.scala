@@ -1,22 +1,14 @@
 object connect {
   def initConnect(): Array[Any] = {
-    val size = 8
-    val iscircle = true
-    val container = Array(Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""))
     val colors = Array(Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"))
-    var par = new Array[Any](5)
-    par(0) = size
-    par(1) = iscircle
-    par(2) = container
-    par(3) = colors
-    par(4) = true
+    var par = new Array[Any](3)
+    par(0) = colors
+    par(1) = true
     return par
   }
   def connectController(par: Array[Any], Input: Array[Int]): Array[Any] = {
-    //println("done")
-    var container = par(2).asInstanceOf[Array[Array[String]]]
-    var colors = par(3).asInstanceOf[Array[Array[String]]]
-    var turn = par(4).asInstanceOf[Boolean]
+    var colors = par(0).asInstanceOf[Array[Array[String]]]
+    var turn = par(1).asInstanceOf[Boolean]
     val r1 = Input(0)
     val c1 = Input(1)
     val r2 = Input(2)
@@ -34,9 +26,8 @@ object connect {
       }
       turn = abstractengine.changeTurn(turn)}
 
-    par(2) = container
-    par(3) = colors
-    par(4)=turn
+    par(0) = colors
+    par(1)=turn
     return par
   }
   def validMove(colors:Array[Array[String]],r1:Int,c1:Int): Boolean =

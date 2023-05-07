@@ -2,22 +2,15 @@ import jdk.internal.platform.Container
 
 object tic {
  def initTic(): Array[Any] = {
-  val size = 3
-  val iscircle = false
   val container = Array(Array("", "", ""), Array("", "", ""), Array("", "", ""))
-  val colors = Array(Array("white", "gray", "white"), Array("gray", "white", "gray"), Array("white", "gray", "white"))
-  var par = new Array[Any](5)
-  par(0) = size
-  par(1) = iscircle
-  par(2) = container
-  par(3) = colors
-  par(4) = true
+  var par = new Array[Any](2)
+  par(0) = container
+  par(1) = true
   return par
  }
   def ticController(par :Array[Any], Input :Array[Int]):  Array[Any] ={
-   var container=par(2).asInstanceOf[Array[Array[String]]]
-    var colors= par(3).asInstanceOf[Array[Array[String]]]
-   var turn = par(4).asInstanceOf[Boolean]
+   var container = par(0).asInstanceOf[Array[Array[String]]]
+   var turn = par(1).asInstanceOf[Boolean]
     val r1 =Input(0)
     val c1 =Input(1)
     val  r2 =Input(2)
@@ -36,9 +29,8 @@ object tic {
    turn = abstractengine.changeTurn(turn)
    }
 
-   par(2)=container
-    par(3)=colors
-    par(4)=turn
+   par(0) = container
+   par(1) = turn
     return par
   }
 

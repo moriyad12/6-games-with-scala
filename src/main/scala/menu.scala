@@ -85,13 +85,70 @@ class menu() extends JFrame with MouseListener with MouseMotionListener {
    return name;
   }
 
-  def creategame( par :Array[Any]): boarddrawer = {
-    val frame = new boarddrawer(par(0), par(1).asInstanceOf[Boolean],par(2).asInstanceOf[Array[Array[String]]],par(3).asInstanceOf[Array[Array[String]]])
+  def creategame( par :Array[Any],name:String): boarddrawer = {
+      if (name == "chess")
+    {
+      val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"))
+
+      val frame = new boarddrawer(8,false, par(0).asInstanceOf[Array[Array[String]]], colors)
+      frame.pack()
+      frame.setResizable(true)
+      frame.setLocationRelativeTo(null)
+      frame.setVisible(true)
+      return frame;
+    }
+      else if (name == "connect")
+    {
+      val container = Array(Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""))
+
+      val frame = new boarddrawer(8,true,container, par(0).asInstanceOf[Array[Array[String]]])
+      frame.pack()
+      frame.setResizable(true)
+      frame.setLocationRelativeTo(null)
+      frame.setVisible(true)
+      return frame;
+    }
+      else if (name == "tic")
+    {val colors = Array(Array("white", "gray", "white"), Array("gray", "white", "gray"), Array("white", "gray", "white"))
+      val frame = new boarddrawer(3,false ,par(0).asInstanceOf[Array[Array[String]]], colors)
+      frame.pack()
+      frame.setResizable(true)
+      frame.setLocationRelativeTo(null)
+      frame.setVisible(true)
+      return frame;
+    }
+      else if (name == "checkers")
+      {
+        val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"))
+
+        val frame = new boarddrawer(8,false, par(0).asInstanceOf[Array[Array[String]]], colors)
+        frame.pack()
+        frame.setResizable(true)
+        frame.setLocationRelativeTo(null)
+        frame.setVisible(true)
+        return frame;
+      }
+        else if (name == "sudko")
+     {
+       val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"))
+
+       val frame = new boarddrawer(9,false, par(0).asInstanceOf[Array[Array[String]]], colors)
+       frame.pack()
+       frame.setResizable(true)
+       frame.setLocationRelativeTo(null)
+       frame.setVisible(true)
+       return frame;
+     }
+    else
+    {
+      val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"))
+
+      val frame = new boarddrawer(8,false, par(0).asInstanceOf[Array[Array[String]]],colors)
     frame.pack()
     frame.setResizable(true)
     frame.setLocationRelativeTo(null)
     frame.setVisible(true)
-    return frame;
+    return frame;}
   }
 
   override def mousePressed(e: MouseEvent): Unit = {

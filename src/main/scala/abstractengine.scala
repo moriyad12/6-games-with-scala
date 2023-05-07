@@ -36,14 +36,14 @@ object abstractengine {
       }
       //create game
       val pra =chooseGame(frame.gamename())
-    val game=frame.creategame(pra)
+    val game=frame.creategame(pra,frame.gamename)
     //game loop
     while (true) {
       while(game.inputReady()!=2)
         {
           print("")
         }
-        game.drawer(Controller(frame.gamename,pra,game.input))
+        game.drawer(Controller(frame.gamename,pra,game.input),frame.gamename)
 
     }
 
