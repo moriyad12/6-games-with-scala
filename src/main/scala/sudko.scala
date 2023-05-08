@@ -1,3 +1,5 @@
+import org.example.boarddrawer
+
 import scala.util.Random
 
 object sudko {
@@ -10,6 +12,23 @@ object sudko {
     par(1) = true
     par(2)=canremove
     return par
+  }
+
+  def create(par: Array[Any]): boarddrawer = {
+    val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"))
+
+    val frame = new boarddrawer(9, false, par(0).asInstanceOf[Array[Array[String]]], colors)
+    frame.pack()
+    frame.setResizable(true)
+    frame.setLocationRelativeTo(null)
+    frame.setVisible(true)
+    return frame
+  }
+  def sudkodrawer(par: Array[Any],game:boarddrawer): Unit ={
+    val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"))
+
+    game.updategrid(9, false, par(0).asInstanceOf[Array[Array[String]]], colors)
+
   }
   def sudkoController(par: Array[Any], Input: Array[Int]): Array[Any] = {
     var container = par(0).asInstanceOf[Array[Array[String]]]

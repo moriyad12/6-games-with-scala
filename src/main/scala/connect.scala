@@ -1,3 +1,5 @@
+import org.example.boarddrawer
+
 object connect {
   def initConnect(): Array[Any] = {
     val colors = Array(Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"), Array("white", "white", "white", "white", "white", "white", "white", "white"))
@@ -5,6 +7,22 @@ object connect {
     par(0) = colors
     par(1) = true
     return par
+  }
+
+  def create(par: Array[Any]): boarddrawer = {
+    val container = Array(Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""))
+    val frame = new boarddrawer(8, true, container, par(0).asInstanceOf[Array[Array[String]]])
+    frame.pack()
+    frame.setResizable(true)
+    frame.setLocationRelativeTo(null)
+    frame.setVisible(true)
+    return frame
+  }
+
+  def connectdrawer(par: Array[Any],game:boarddrawer): Unit = {
+    val container = Array(Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""))
+    game.updategrid(8, true, container, par(0).asInstanceOf[Array[Array[String]]])
+
   }
   def connectController(par: Array[Any], Input: Array[Int]): Array[Any] = {
     var colors = par(0).asInstanceOf[Array[Array[String]]]

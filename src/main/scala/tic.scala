@@ -1,4 +1,9 @@
 import jdk.internal.platform.Container
+import org.example.boarddrawer
+import sun.tools.jconsole.inspector.XDataViewer.dispose
+
+import java.awt.Window
+import javax.swing.JFrame
 
 object tic {
  def initTic(): Array[Any] = {
@@ -7,6 +12,23 @@ object tic {
   par(0) = container
   par(1) = true
   return par
+ }
+
+ def create(par: Array[Any]): boarddrawer = {
+  import javax.swing.JFrame
+  val colors = Array(Array("white", "gray", "white"), Array("gray", "white", "gray"), Array("white", "gray", "white"))
+  val frame = new boarddrawer(3, false, par(0).asInstanceOf[Array[Array[String]]], colors)
+  frame.pack()
+  frame.setResizable(true)
+  frame.setLocationRelativeTo(null)
+  frame.setVisible(true)
+  return frame
+ }
+ def ticdrawer(par: Array[Any],game:boarddrawer): Unit = {
+  import javax.swing.JFrame
+  val colors = Array(Array("white", "gray", "white"), Array("gray", "white", "gray"), Array("white", "gray", "white"))
+  game.updategrid(3, false, par(0).asInstanceOf[Array[Array[String]]], colors)
+
  }
   def ticController(par :Array[Any], Input :Array[Int]):  Array[Any] ={
    var container = par(0).asInstanceOf[Array[Array[String]]]

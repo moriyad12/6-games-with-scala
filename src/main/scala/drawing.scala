@@ -8,7 +8,7 @@ import java.lang.Integer.parseInt
 
 class boarddrawer(val size2: Any, val iscircle: Boolean, val container: Array[Array[String]], val color: Array[Array[String]]) extends JFrame with MouseListener with MouseMotionListener {
   this.click = 0
-  val size1 :Int =size2.asInstanceOf[Int]
+  val size1: Int = size2.asInstanceOf[Int]
   private[example] var r1 = 0
   private[example] var c1 = 0
   private[example] var r2 = 0
@@ -73,70 +73,7 @@ class boarddrawer(val size2: Any, val iscircle: Boolean, val container: Array[Ar
     input
   }
 
-
-  def handle(i: Int): Unit = {
-    if (click==0) {
-      r1 = i / size1
-      c1 = i % size1
-      click = 1
-    }
-    else {
-      r2 = i / size1
-      c2 = i % size1
-      click = 2
-    }
-  }
-  def inputReady(): Int={
-  return click
-  }
-  def chosecolor(c: String): Color = if (c eq "white") Color.white
-  else if (c eq "gray") Color.gray
-  else if (c eq "red") Color.RED
-  else Color.blue
-
-  def drawer(par: Array[Any],name:String): Unit = {
-    if (name == "chess") chessdrawer(par)
-    else if (name == "connect") connectdrawer(par)
-    else if (name == "tic") ticdrawer(par)
-    else if (name == "checkers") cheeckerdrawer(par)
-    else if (name == "sudko") sudkodrawer(par)
-    else queendrawer(par)
-    click=0
-  }
-
-  def chessdrawer(par: Array[Any]): Unit = {
-    val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"))
-    updategrid(8,false, par(0).asInstanceOf[Array[Array[String]]], colors)
-
-  }
-
-  def connectdrawer(par: Array[Any]): Unit = {
-    val container = Array(Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""), Array("", "", "", "", "", "", "", ""))
-    updategrid(8,true ,container, par(0).asInstanceOf[Array[Array[String]]])
-  }
-
-  def cheeckerdrawer(par: Array[Any]): Unit = {
-    val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"))
-    updategrid(8,false, par(0).asInstanceOf[Array[Array[String]]],colors)
-  }
-
-  def ticdrawer(par: Array[Any]): Unit = {
-    val colors = Array(Array("white", "gray", "white"), Array("gray", "white", "gray"), Array("white", "gray", "white"))
-    updategrid( 3,false,par(0).asInstanceOf[Array[Array[String]]], colors)
-  }
-
-  def sudkodrawer(par: Array[Any]): Unit = {
-    val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray", "white"))
-
-    updategrid(9,false, par(0).asInstanceOf[Array[Array[String]]], colors)
-  }
-
-  def queendrawer(par: Array[Any]): Unit = {
-    val colors = Array(Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"), Array("white", "gray", "white", "gray", "white", "gray", "white", "gray"), Array("gray", "white", "gray", "white", "gray", "white", "gray", "white"))
-
-    updategrid( 8,false,par(0).asInstanceOf[Array[Array[String]]], colors)
-  }
-    def updategrid(size: Int, iscircle: Boolean, container: Array[Array[String]], color: Array[Array[String]]): Unit = {
+  def updategrid(size: Int, iscircle: Boolean, container: Array[Array[String]], color: Array[Array[String]]): Unit = {
     for (i <- 0 until size * size) {
       if (!iscircle) {
         val addBtn = Baoard.getComponent(i).asInstanceOf[JButton]
@@ -151,7 +88,31 @@ class boarddrawer(val size2: Any, val iscircle: Boolean, val container: Array[Ar
 
       }
     }
+    click=0
   }
+
+
+  def handle(i: Int): Unit = {
+    if (click == 0) {
+      r1 = i / size1
+      c1 = i % size1
+      click = 1
+    }
+    else {
+      r2 = i / size1
+      c2 = i % size1
+      click = 2
+    }
+  }
+
+  def inputReady(): Int = {
+    return click
+  }
+
+  def chosecolor(c: String): Color = if (c eq "white") Color.white
+  else if (c eq "gray") Color.gray
+  else if (c eq "red") Color.RED
+  else Color.blue
 
   override def mousePressed(e: MouseEvent): Unit = {
   }
